@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,8 +100,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="matplotlib 基础操作">
 <meta property="og:url" content="http://yoursite.com/2017/08/27/matplotlib-基础操作/index.html">
-<meta property="og:site_name" content="welcome">
+<meta property="og:site_name" content="pia&#39;s Note">
 <meta property="og:description" content="Introduction  Matplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery pylab  pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。 Usage  1.画一个正余弦曲线在[-π,π]区间内取256个点">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure1.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure2.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure3.png">
@@ -109,7 +110,7 @@
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure5.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure6.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure7.png">
-<meta property="og:updated_time" content="2017-08-27T13:46:12.000Z">
+<meta property="og:updated_time" content="2017-08-28T10:10:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib 基础操作">
 <meta name="twitter:description" content="Introduction  Matplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery pylab  pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。 Usage  1.画一个正余弦曲线在[-π,π]区间内取256个点">
@@ -121,15 +122,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -149,7 +150,7 @@
 
 
 
-  <title>matplotlib 基础操作 | welcome</title>
+  <title>matplotlib 基础操作 | pia's Note</title>
   
 
 
@@ -161,14 +162,14 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -179,7 +180,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">welcome</span>
+        <span class="site-title">pia's Note</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -209,7 +210,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -255,7 +276,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
+      <meta itemprop="name" content="pia's Note">
     </span>
 
     
@@ -273,9 +294,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T21:06:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T21:06:21+08:00">
                 2017-08-27
               </time>
             
@@ -321,7 +342,7 @@
 <p>pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。</p>
 <h1>Usage</h1>
 
-<p></p><h2>1.画一个正余弦曲线</h2><br>在[-π,π]区间内取256个点绘图：<p></p>
+<h2 id="1-画一个正余弦曲线"><a href="#1-画一个正余弦曲线" class="headerlink" title="1.画一个正余弦曲线"></a>1.画一个正余弦曲线</h2><p>在[-π,π]区间内取256个点绘图：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line">x = np.linspace(-np.pi, np.pi, <span class="number">256</span>)</div><div class="line">C, S = np.cos(x), np.sin(x)</div><div class="line"></div><div class="line">plot(x, C)</div><div class="line">plot(x, S)</div><div class="line"></div><div class="line">show()</div></pre></td></tr></table></figure>
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure1.png" alt="Figure1" width="640" height="480" class="alignnone size-full wp-image-682"></p>
 <h2 id="2-默认配置"><a href="#2-默认配置" class="headerlink" title="2.默认配置"></a>2.默认配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 导入 matplotlib 的所有内容（nympy 可以用 np 这个名字来使用）</span></div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="comment"># 创建一个 8 * 6 点（point）的图，并设置分辨率为 80</span></div><div class="line">figure(figsize=(<span class="number">8</span>,<span class="number">6</span>), dpi=<span class="number">80</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建一个新的 1 * 1 的子图，接下来的图样绘制在其中的第 1 块（也是唯一的一块）</span></div><div class="line">subplot(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</div><div class="line"></div><div class="line">X = np.linspace(-np.pi, np.pi, <span class="number">256</span>,endpoint=<span class="keyword">True</span>)</div><div class="line">C,S = np.cos(X), np.sin(X)</div><div class="line"></div><div class="line"><span class="comment"># 绘制余弦曲线，使用蓝色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, C, color=<span class="string">"blue"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 绘制正弦曲线，使用绿色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, S, color=<span class="string">"green"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴的上下限</span></div><div class="line">xlim(<span class="number">-4.0</span>,<span class="number">4.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴记号</span></div><div class="line">xticks(np.linspace(<span class="number">-4</span>,<span class="number">4</span>,<span class="number">9</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴的上下限</span></div><div class="line">ylim(<span class="number">-1.0</span>,<span class="number">1.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴记号</span></div><div class="line">yticks(np.linspace(<span class="number">-1</span>,<span class="number">1</span>,<span class="number">5</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 以分辨率 72 来保存图片</span></div><div class="line"><span class="comment"># savefig("exercice_2.png",dpi=72)</span></div><div class="line"></div><div class="line"><span class="comment"># 在屏幕上显示</span></div><div class="line">show()</div></pre></td></tr></table></figure>
@@ -340,9 +361,7 @@
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure6.png" alt="Figure6" width="640" height="480" class="alignnone size-full wp-image-748"></p>
 <h2 id="8-添加图例"><a href="#8-添加图例" class="headerlink" title="8.添加图例"></a>8.添加图例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">plot(x, C, color=<span class="string">"blue"</span>, linewidth=<span class="number">2.5</span>, linestyle=<span class="string">"-"</span>, label=<span class="string">"cosine"</span>)</div><div class="line">plot(x, S, color=<span class="string">"red"</span>, linewidth=<span class="number">2.5</span>, linestyle=<span class="string">"-"</span>, label=<span class="string">"sine"</span>)</div><div class="line"></div><div class="line">legend(loc=<span class="string">'upper left'</span>)</div><div class="line">...</div></pre></td></tr></table></figure>
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure7.png" alt="Figure7" width="640" height="480" class="alignnone size-full wp-image-754"></p>
-<h1>Reference</h1>
-
-<ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="https://liam0205.me/2014/09/11/matplotlib-tutorial-zh-cn/" target="_blank" rel="external">Matplotlib 教程| 始终</a></li>
 <li><a href="http://codingpy.com/article/a-quick-intro-to-matplotlib/" target="_blank" rel="external">十分钟入门Matplotlib</a></li>
 </ul>
@@ -366,14 +385,14 @@
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="pia WeChat Pay"/>
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="pia WeChat Pay"/>
         <p>WeChat Pay</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="pia Alipay"/>
+        <img id="alipay_qr" src="/images/alipay.png" alt="pia Alipay"/>
         <p>Alipay</p>
       </div>
     
@@ -416,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/28/next配置/" rel="prev" title="next配置">
+                next配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -469,10 +492,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -492,10 +515,10 @@
           
             <div class="site-state-item site-state-posts">
             
-              <a href="/archives">
+              <a href="/archives/">
             
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -506,10 +529,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
-              
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
@@ -542,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">pylab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">1.画一个正余弦曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-默认配置"><span class="nav-number">2.2.</span> <span class="nav-text">2.默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-改变颜色、粗细"><span class="nav-number">2.3.</span> <span class="nav-text">3.改变颜色、粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置图片边界-缩放视野"><span class="nav-number">2.4.</span> <span class="nav-text">4.设置图片边界(缩放视野)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置记号"><span class="nav-number">2.5.</span> <span class="nav-text">5.设置记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-设置记号的标签"><span class="nav-number">2.6.</span> <span class="nav-text">6.设置记号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-移动脊柱Spines"><span class="nav-number">2.7.</span> <span class="nav-text">7.移动脊柱Spines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-添加图例"><span class="nav-number">2.8.</span> <span class="nav-text">8.添加图例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">pylab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-画一个正余弦曲线"><span class="nav-number">2.1.</span> <span class="nav-text">1.画一个正余弦曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-默认配置"><span class="nav-number">2.2.</span> <span class="nav-text">2.默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-改变颜色、粗细"><span class="nav-number">2.3.</span> <span class="nav-text">3.改变颜色、粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置图片边界-缩放视野"><span class="nav-number">2.4.</span> <span class="nav-text">4.设置图片边界(缩放视野)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置记号"><span class="nav-number">2.5.</span> <span class="nav-text">5.设置记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-设置记号的标签"><span class="nav-number">2.6.</span> <span class="nav-text">6.设置记号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-移动脊柱Spines"><span class="nav-number">2.7.</span> <span class="nav-text">7.移动脊柱Spines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-添加图例"><span class="nav-number">2.8.</span> <span class="nav-text">8.添加图例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
@@ -575,11 +598,11 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
   <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
 
 
         

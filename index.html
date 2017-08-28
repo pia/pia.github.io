@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -96,11 +96,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="welcome">
+<meta property="og:title" content="pia&#39;s Note">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="welcome">
+<meta property="og:site_name" content="pia&#39;s Note">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="welcome">
+<meta name="twitter:title" content="pia&#39;s Note">
 
 
 
@@ -108,15 +109,15 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '5.1.2',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -136,7 +137,7 @@
 
 
 
-  <title>welcome</title>
+  <title>pia's Note</title>
   
 
 
@@ -148,14 +149,14 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left 
+  <div class="container sidebar-position-right 
   page-home">
     <div class="headband"></div>
 
@@ -167,7 +168,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">welcome</span>
+        <span class="site-title">pia's Note</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -197,7 +198,27 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
           </a>
         </li>
       
@@ -234,6 +255,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/next配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pia's Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/28/next配置/" itemprop="url">next配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T18:07:58+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>在 Hexo 中有两份主要的配置文件，其名称都是 _config.yml。 其中，一份位于站点根目录下，主要包含 Hexo 本身的配置；另一份位于主题目录下，这份配置由主题作者提供，主要用于配置主题相关的选项。</p>
+</blockquote>
+<h1 id="Step"><a href="#Step" class="headerlink" title="Step"></a>Step</h1><h2 id="1-打赏按钮"><a href="#1-打赏按钮" class="headerlink" title="1.打赏按钮"></a>1.打赏按钮</h2><p>打赏的图片资源放在 souce\images\ 下，然后在_config.yml中添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Donate 文章末尾显示打赏按钮</div><div class="line">reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！</div><div class="line">wechatpay: /images/wechatpay.jpg</div><div class="line">alipay: /images/alipay.jpg</div></pre></td></tr></table></figure>
+<p>二维码在<a href="https://cli.im/weixin" target="_blank" rel="external">草料二维码</a>上面处理一下，统一设置成300x300像素。</p>
+<h2 id="2-设置语言"><a href="#2-设置语言" class="headerlink" title="2.设置语言"></a>2.设置语言</h2><p>编辑_config.yml，将 language 设置成你所需要的语言。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 简体中文</div><div class="line">language: zh-Hans</div><div class="line"># English</div><div class="line">language: en</div></pre></td></tr></table></figure>
+<h2 id="3-设置菜单"><a href="#3-设置菜单" class="headerlink" title="3.设置菜单"></a>3.设置菜单</h2><p>1.编辑themes/next/_config.yml，把需要添加的page前‘#’去掉：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  #about: /about</div><div class="line">  #categories: /categories</div><div class="line">  tags: /tags</div><div class="line">  #commonweal: /404.html</div></pre></td></tr></table></figure>
+<p>2.新建page</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page &quot;archives&quot;</div></pre></td></tr></table></figure>
+<h2 id="4-设置Scheme"><a href="#4-设置Scheme" class="headerlink" title="4.设置Scheme"></a>4.设置Scheme</h2><p>默认的Muse太难看了，编辑themes/next/_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Schemes</div><div class="line">#scheme: Muse</div><div class="line">scheme: Mist</div><div class="line">#scheme: Pisces</div></pre></td></tr></table></figure>
+<h2 id="5-设置侧栏出现时机"><a href="#5-设置侧栏出现时机" class="headerlink" title="5.设置侧栏出现时机"></a>5.设置侧栏出现时机</h2><p>默认情况下，侧栏仅在文章页面（拥有目录列表）时才显示，并放置于右侧位置。设置侧栏显示的时机，修改 sidebar.display 的值，支持的选项有：</p>
+<ul>
+<li>post - 默认行为，在文章页面（拥有目录列表）时显示</li>
+<li>always - 在所有页面中都显示</li>
+<li>hide - 在所有页面中都隐藏（可以手动展开）</li>
+<li>remove - 完全移除</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://github.com/iissnan/hexo-theme-next/pull/687" target="_blank" rel="external">Add wechat and alipay reward for post </a></li>
+<li><a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">next theme settings</a></li>
+<li><a href="http://reimuwang.org/2017/04/17/hexo-hexo%E4%B8%BB%E9%A2%98next%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" target="_blank" rel="external">hexo主题next使用总结</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/matplotlib-基础操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -243,7 +409,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
+      <meta itemprop="name" content="pia's Note">
     </span>
 
     
@@ -263,9 +429,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T21:06:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T21:06:21+08:00">
                 2017-08-27
               </time>
             
@@ -313,7 +479,7 @@
 <p>pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。</p>
 <h1>Usage</h1>
 
-<p></p><h2>1.画一个正余弦曲线</h2><br>在[-π,π]区间内取256个点绘图：<p></p>
+<h2 id="1-画一个正余弦曲线"><a href="#1-画一个正余弦曲线" class="headerlink" title="1.画一个正余弦曲线"></a>1.画一个正余弦曲线</h2><p>在[-π,π]区间内取256个点绘图：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line">x = np.linspace(-np.pi, np.pi, <span class="number">256</span>)</div><div class="line">C, S = np.cos(x), np.sin(x)</div><div class="line"></div><div class="line">plot(x, C)</div><div class="line">plot(x, S)</div><div class="line"></div><div class="line">show()</div></pre></td></tr></table></figure>
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure1.png" alt="Figure1" width="640" height="480" class="alignnone size-full wp-image-682"></p>
 <h2 id="2-默认配置"><a href="#2-默认配置" class="headerlink" title="2.默认配置"></a>2.默认配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 导入 matplotlib 的所有内容（nympy 可以用 np 这个名字来使用）</span></div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="comment"># 创建一个 8 * 6 点（point）的图，并设置分辨率为 80</span></div><div class="line">figure(figsize=(<span class="number">8</span>,<span class="number">6</span>), dpi=<span class="number">80</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建一个新的 1 * 1 的子图，接下来的图样绘制在其中的第 1 块（也是唯一的一块）</span></div><div class="line">subplot(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</div><div class="line"></div><div class="line">X = np.linspace(-np.pi, np.pi, <span class="number">256</span>,endpoint=<span class="keyword">True</span>)</div><div class="line">C,S = np.cos(X), np.sin(X)</div><div class="line"></div><div class="line"><span class="comment"># 绘制余弦曲线，使用蓝色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, C, color=<span class="string">"blue"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 绘制正弦曲线，使用绿色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, S, color=<span class="string">"green"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴的上下限</span></div><div class="line">xlim(<span class="number">-4.0</span>,<span class="number">4.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴记号</span></div><div class="line">xticks(np.linspace(<span class="number">-4</span>,<span class="number">4</span>,<span class="number">9</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴的上下限</span></div><div class="line">ylim(<span class="number">-1.0</span>,<span class="number">1.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴记号</span></div><div class="line">yticks(np.linspace(<span class="number">-1</span>,<span class="number">1</span>,<span class="number">5</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 以分辨率 72 来保存图片</span></div><div class="line"><span class="comment"># savefig("exercice_2.png",dpi=72)</span></div><div class="line"></div><div class="line"><span class="comment"># 在屏幕上显示</span></div><div class="line">show()</div></pre></td></tr></table></figure>
@@ -332,9 +498,7 @@
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure6.png" alt="Figure6" width="640" height="480" class="alignnone size-full wp-image-748"></p>
 <h2 id="8-添加图例"><a href="#8-添加图例" class="headerlink" title="8.添加图例"></a>8.添加图例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">plot(x, C, color=<span class="string">"blue"</span>, linewidth=<span class="number">2.5</span>, linestyle=<span class="string">"-"</span>, label=<span class="string">"cosine"</span>)</div><div class="line">plot(x, S, color=<span class="string">"red"</span>, linewidth=<span class="number">2.5</span>, linestyle=<span class="string">"-"</span>, label=<span class="string">"sine"</span>)</div><div class="line"></div><div class="line">legend(loc=<span class="string">'upper left'</span>)</div><div class="line">...</div></pre></td></tr></table></figure>
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure7.png" alt="Figure7" width="640" height="480" class="alignnone size-full wp-image-754"></p>
-<h1>Reference</h1>
-
-<ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
 <li><a href="https://liam0205.me/2014/09/11/matplotlib-tutorial-zh-cn/" target="_blank" rel="external">Matplotlib 教程| 始终</a></li>
 <li><a href="http://codingpy.com/article/a-quick-intro-to-matplotlib/" target="_blank" rel="external">十分钟入门Matplotlib</a></li>
 </ul>
@@ -395,7 +559,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
+      <meta itemprop="name" content="pia's Note">
     </span>
 
     
@@ -415,9 +579,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T20:39:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T20:39:59+08:00">
                 2017-08-27
               </time>
             
@@ -519,7 +683,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="welcome">
+      <meta itemprop="name" content="pia's Note">
     </span>
 
     
@@ -539,9 +703,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-27T19:58:18+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T19:58:18+08:00">
                 2017-08-27
               </time>
             
@@ -671,10 +835,10 @@
           
             <div class="site-state-item site-state-posts">
             
-              <a href="/archives">
+              <a href="/archives/">
             
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
@@ -685,10 +849,10 @@
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">tags</span>
-              
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
             </div>
           
 
@@ -738,11 +902,11 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
   <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.2</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
 
 
         
