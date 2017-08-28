@@ -95,13 +95,13 @@
 
 
 
-<meta name="description" content="Introduction  Matplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery pylab  pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。 Usage  1.画一个正余弦曲线在[-π,π]区间内取256个点">
+<meta name="description" content="IntroductionMatplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery">
 <meta name="keywords" content="matplotlib,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="matplotlib 基础操作">
 <meta property="og:url" content="http://yoursite.com/2017/08/27/matplotlib-基础操作/index.html">
 <meta property="og:site_name" content="pia&#39;s Note">
-<meta property="og:description" content="Introduction  Matplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery pylab  pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。 Usage  1.画一个正余弦曲线在[-π,π]区间内取256个点">
+<meta property="og:description" content="IntroductionMatplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure1.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure2.png">
@@ -110,10 +110,10 @@
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure5.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure6.png">
 <meta property="og:image" content="https://holacs.files.wordpress.com/2017/08/figure7.png">
-<meta property="og:updated_time" content="2017-08-28T10:10:42.000Z">
+<meta property="og:updated_time" content="2017-08-28T12:14:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib 基础操作">
-<meta name="twitter:description" content="Introduction  Matplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery pylab  pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。 Usage  1.画一个正余弦曲线在[-π,π]区间内取256个点">
+<meta name="twitter:description" content="IntroductionMatplotlib是python最出名的面向对象绘图库。官网：matplotlib.org, 成品展示：gallery">
 <meta name="twitter:image" content="https://holacs.files.wordpress.com/2017/08/figure1.png">
 
 
@@ -334,15 +334,10 @@
       
 
       
-        <h1>Introduction</h1>
-
-<p>Matplotlib是python最出名的面向对象绘图库。官网：<a href="https://matplotlib.org/" target="_blank" rel="external">matplotlib.org</a>, 成品展示：<a href="https://matplotlib.org/gallery.html" target="_blank" rel="external">gallery</a></p>
-<h2>pylab</h2>
-
-<p>pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。</p>
-<h1>Usage</h1>
-
-<h2 id="1-画一个正余弦曲线"><a href="#1-画一个正余弦曲线" class="headerlink" title="1.画一个正余弦曲线"></a>1.画一个正余弦曲线</h2><p>在[-π,π]区间内取256个点绘图：</p>
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Matplotlib是python最出名的面向对象绘图库。官网：<a href="https://matplotlib.org/" target="_blank" rel="external">matplotlib.org</a>, 成品展示：<a href="https://matplotlib.org/gallery.html" target="_blank" rel="external">gallery</a></p>
+<a id="more"></a>
+<h2 id="pylab"><a href="#pylab" class="headerlink" title="pylab"></a>pylab</h2><p>pylab 是 matplotlib 面向对象绘图库的一个接口。它的语法和 Matlab 十分相近。也就是说，它主要的绘图命令和 Matlab 对应的命令有相似的参数。</p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><h2 id="1-画一个正余弦曲线"><a href="#1-画一个正余弦曲线" class="headerlink" title="1.画一个正余弦曲线"></a>1.画一个正余弦曲线</h2><p>在[-π,π]区间内取256个点绘图：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line">x = np.linspace(-np.pi, np.pi, <span class="number">256</span>)</div><div class="line">C, S = np.cos(x), np.sin(x)</div><div class="line"></div><div class="line">plot(x, C)</div><div class="line">plot(x, S)</div><div class="line"></div><div class="line">show()</div></pre></td></tr></table></figure>
 <p><img src="https://holacs.files.wordpress.com/2017/08/figure1.png" alt="Figure1" width="640" height="480" class="alignnone size-full wp-image-682"></p>
 <h2 id="2-默认配置"><a href="#2-默认配置" class="headerlink" title="2.默认配置"></a>2.默认配置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 导入 matplotlib 的所有内容（nympy 可以用 np 这个名字来使用）</span></div><div class="line"><span class="keyword">from</span> pylab <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="comment"># 创建一个 8 * 6 点（point）的图，并设置分辨率为 80</span></div><div class="line">figure(figsize=(<span class="number">8</span>,<span class="number">6</span>), dpi=<span class="number">80</span>)</div><div class="line"></div><div class="line"><span class="comment"># 创建一个新的 1 * 1 的子图，接下来的图样绘制在其中的第 1 块（也是唯一的一块）</span></div><div class="line">subplot(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>)</div><div class="line"></div><div class="line">X = np.linspace(-np.pi, np.pi, <span class="number">256</span>,endpoint=<span class="keyword">True</span>)</div><div class="line">C,S = np.cos(X), np.sin(X)</div><div class="line"></div><div class="line"><span class="comment"># 绘制余弦曲线，使用蓝色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, C, color=<span class="string">"blue"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 绘制正弦曲线，使用绿色的、连续的、宽度为 1 （像素）的线条</span></div><div class="line">plot(X, S, color=<span class="string">"green"</span>, linewidth=<span class="number">1.0</span>, linestyle=<span class="string">"-"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴的上下限</span></div><div class="line">xlim(<span class="number">-4.0</span>,<span class="number">4.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置横轴记号</span></div><div class="line">xticks(np.linspace(<span class="number">-4</span>,<span class="number">4</span>,<span class="number">9</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴的上下限</span></div><div class="line">ylim(<span class="number">-1.0</span>,<span class="number">1.0</span>)</div><div class="line"></div><div class="line"><span class="comment"># 设置纵轴记号</span></div><div class="line">yticks(np.linspace(<span class="number">-1</span>,<span class="number">1</span>,<span class="number">5</span>,endpoint=<span class="keyword">True</span>))</div><div class="line"></div><div class="line"><span class="comment"># 以分辨率 72 来保存图片</span></div><div class="line"><span class="comment"># savefig("exercice_2.png",dpi=72)</span></div><div class="line"></div><div class="line"><span class="comment"># 在屏幕上显示</span></div><div class="line">show()</div></pre></td></tr></table></figure>
@@ -379,7 +374,7 @@
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
   <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>Donate</span>
+    <span>赏</span>
   </button>
   <div id="QR" style="display: none;">
 
@@ -517,7 +512,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -565,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">pylab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-画一个正余弦曲线"><span class="nav-number">2.1.</span> <span class="nav-text">1.画一个正余弦曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-默认配置"><span class="nav-number">2.2.</span> <span class="nav-text">2.默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-改变颜色、粗细"><span class="nav-number">2.3.</span> <span class="nav-text">3.改变颜色、粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置图片边界-缩放视野"><span class="nav-number">2.4.</span> <span class="nav-text">4.设置图片边界(缩放视野)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置记号"><span class="nav-number">2.5.</span> <span class="nav-text">5.设置记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-设置记号的标签"><span class="nav-number">2.6.</span> <span class="nav-text">6.设置记号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-移动脊柱Spines"><span class="nav-number">2.7.</span> <span class="nav-text">7.移动脊柱Spines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-添加图例"><span class="nav-number">2.8.</span> <span class="nav-text">8.添加图例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pylab"><span class="nav-number">1.1.</span> <span class="nav-text">pylab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Usage"><span class="nav-number">2.</span> <span class="nav-text">Usage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-画一个正余弦曲线"><span class="nav-number">2.1.</span> <span class="nav-text">1.画一个正余弦曲线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-默认配置"><span class="nav-number">2.2.</span> <span class="nav-text">2.默认配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-改变颜色、粗细"><span class="nav-number">2.3.</span> <span class="nav-text">3.改变颜色、粗细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-设置图片边界-缩放视野"><span class="nav-number">2.4.</span> <span class="nav-text">4.设置图片边界(缩放视野)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置记号"><span class="nav-number">2.5.</span> <span class="nav-text">5.设置记号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-设置记号的标签"><span class="nav-number">2.6.</span> <span class="nav-text">6.设置记号的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-移动脊柱Spines"><span class="nav-number">2.7.</span> <span class="nav-text">7.移动脊柱Spines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-添加图例"><span class="nav-number">2.8.</span> <span class="nav-text">8.添加图例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
