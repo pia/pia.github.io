@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="blog," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
-<meta name="keywords" content="python">
+<meta name="description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
+<meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python变量作用域规则">
-<meta property="og:url" content="http://yoursite.com/2017/08/19/python变量作用域规则/index.html">
+<meta property="og:title" content="cloudflare踩坑">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/cloudflare踩坑/index.html">
 <meta property="og:site_name" content="pia&#39;s Note">
-<meta property="og:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
+<meta property="og:description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T13:56:20.000Z">
+<meta property="og:updated_time" content="2017-08-30T13:54:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python变量作用域规则">
-<meta name="twitter:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
+<meta name="twitter:title" content="cloudflare踩坑">
+<meta name="twitter:description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/19/python变量作用域规则/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/29/cloudflare踩坑/"/>
 
 
 
 
 
-  <title>python变量作用域规则 | pia's Note</title>
+  <title>cloudflare踩坑 | pia's Note</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/python变量作用域规则/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/cloudflare踩坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pia">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python变量作用域规则</h1>
+          <h1 class="post-title" itemprop="name headline">cloudflare踩坑</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T22:28:49+08:00">
-                2017-08-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T22:36:46+08:00">
+                2017-08-29
               </time>
             
 
@@ -321,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm-and-Computer-Science/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm and Computer Science</span>
+                  <a href="/categories/Computer-Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Skills</span>
                   </a>
                 </span>
 
@@ -358,18 +358,47 @@
       
 
       
-        <p>首先看一下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">b = <span class="number">5</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(a)</span>:</span></div><div class="line">    print(a)</div><div class="line">    print(b)</div><div class="line">    b = <span class="number">9</span></div><div class="line"></div><div class="line">f1(<span class="number">3</span>)</div></pre></td></tr></table></figure>
-<p>很容易认为输出3 5，但实际上：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py"</span>, line <span class="number">10</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    f(<span class="number">3</span>)</div><div class="line">  File <span class="string">"/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py"</span>, line <span class="number">6</span>, <span class="keyword">in</span> f</div><div class="line">    print(b)</div><div class="line">UnboundLocalError: local variable <span class="string">'b'</span> referenced before assignment</div><div class="line"></div><div class="line"></div><div class="line">Process finished <span class="keyword">with</span> exit code <span class="number">1</span></div></pre></td></tr></table></figure>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>cloudflare可以一键https、优化网站速度，还有各种自定义功能。</p>
 <a id="more"></a>
-<p>原因：<br>python不要求声明变量，<strong>假定函数声明中赋值的变量是局部变量</strong>。</p>
-<hr>
-<p>这是设计选择，防止在不知情的情况下获取全局变量。如果想让解释器把b当成全局变量，使用global声明：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> dis <span class="keyword">import</span> dis</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(a)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">global</span> b</div><div class="line"><span class="meta">... </span>    print(a)</div><div class="line"><span class="meta">... </span>    print(b)</div><div class="line"><span class="meta">... </span>    b = <span class="number">9</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f2(<span class="number">3</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">90</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">90</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
-<hr>
-<p>通过dis模块反汇编f1和f2字节码比较两者不同：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dis(f1)</div><div class="line">  <span class="number">2</span>           <span class="number">0</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">              <span class="number">2</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">              <span class="number">4</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">              <span class="number">6</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">3</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">10</span> LOAD_FAST                <span class="number">1</span> (b)</div><div class="line">             <span class="number">12</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">14</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">4</span>          <span class="number">16</span> LOAD_CONST               <span class="number">1</span> (<span class="number">9</span>)</div><div class="line">             <span class="number">18</span> STORE_FAST               <span class="number">1</span> (b)</div><div class="line">             <span class="number">20</span> LOAD_CONST               <span class="number">0</span> (<span class="keyword">None</span>)</div><div class="line">             <span class="number">22</span> RETURN_VALUE</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dis(f2)</div><div class="line">  <span class="number">3</span>           <span class="number">0</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">              <span class="number">2</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">              <span class="number">4</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">              <span class="number">6</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">4</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">10</span> LOAD_GLOBAL              <span class="number">1</span> (b)</div><div class="line">             <span class="number">12</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">14</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">5</span>          <span class="number">16</span> LOAD_CONST               <span class="number">1</span> (<span class="number">9</span>)</div><div class="line">             <span class="number">18</span> STORE_GLOBAL             <span class="number">1</span> (b)</div><div class="line">             <span class="number">20</span> LOAD_CONST               <span class="number">0</span> (<span class="keyword">None</span>)</div><div class="line">             <span class="number">22</span> RETURN_VALUE</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="1-SSL"><a href="#1-SSL" class="headerlink" title="1.SSL"></a>1.SSL</h2><p>cloudflare提供免费的一键ssl证书，只要在dnss配置里选上‘DNS and HTTP proxy(CDN)’，这样解析dns结果为cloudflare的ip<br>但是配置后默认http和https协议都可以访问，需要设置always use https：</p>
+<ol>
+<li><p>Page Rules里添加跳转规则，免费版可以设置3条。将‘<a href="http://*tech.cx/\*’设置always" target="_blank" rel="external">http://*tech.cx/\*’设置always</a> use https</p>
+</li>
+<li><p>更简单方法是在crypto里勾选always us https即可</p>
+</li>
+</ol>
+<p>对ssl的设置有几个选项：</p>
+<ul>
+<li>Flexible SSL：仅cloudflare到客户端部分加密</li>
+<li>SSL Full：全程加密，服务器上可使用自签证书</li>
+<li>SSL FULL(strict)：全程加密，服务器上需要CA签发的证书</li>
+</ul>
+<h2 id="2-DNS解析"><a href="#2-DNS解析" class="headerlink" title="2.DNS解析"></a>2.DNS解析</h2><p>不需要使用cdn的记录，不要选上‘DNS and HTTP proxy(CDN)’，否则会解析错误。🌚</p>
+<h2 id="3-裸域-跳转www"><a href="#3-裸域-跳转www" class="headerlink" title="3.裸域@跳转www"></a>3.裸域@跳转www</h2><p>裸域设置CNAME到 www.example.com </p>
+<p>主机头设置CNAME记录违反RFC，所以cloudflare会自动使用CNAME Flattening：</p>
+<blockquote>
+<p>Cloudflare uses CNAME Flattening to present a CNAME as an A record. The Cloudflare server generating the response follows the CNAME chain so that the response to the request from the client (for example, the browser) contains only non-CNAME data – usually, an IP address. This effectively creates an A or an AAAA record. Without flattening, Cloudflare would serve the CNAME record directly to the recursor (the DNS resolver that translates the domain name to an IP address).</p>
+<p>CNAMEs can cause confusion when you wish to have a CNAME for a domain (for example, a CNAME from example.com to example.herokuapp.com) but also wish to have another type of DNS record at the root, for example MX records for mail delivery. The RFC requires CNAMEs to be exclusive to a DNS zone when present and the example presented may cause problems when receiving email, since the RFC also requires an MX record to map to an A record and not a CNAME. CNAME Flattening ensures email delivery because the CNAME is translated to an A record.</p>
+<p>Some other DNS providers call similar functionality (without RFC compliance) ALIAS or ANAME records.</p>
+</blockquote>
+<p>也可以用page rules或者解析到自己服务器上再跳转。</p>
+<h2 id="4-Rocket-Loader"><a href="#4-Rocket-Loader" class="headerlink" title="4.Rocket Loader"></a>4.Rocket Loader</h2><ul>
+<li>Decreasing the number of network requests by bundling JavaScript files, even third party resources, to avoid slowing down page rendering</li>
+<li>Asynchronously loading scripts, including third party scripts, so that they do not block the content of your page from loading immediately</li>
+<li>Caching scripts locally (using LocalStorage, available on most browsers and smart phones) so they aren’t refetched unless necessary</li>
+</ul>
+<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="5.其他"></a>5.其他</h2><ul>
+<li>Auto Minify:优化CSS、JavaScript、HTML，减少体积</li>
+<li>默认支持ipv6</li>
+<li>一些有用的app: Google Analytics/Tweet This!</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank" rel="external">CNAME Flattening: RFC-compliant support for CNAME at the root</a></li>
+<li><a href="https://www.v2ex.com/t/289721" target="_blank" rel="external">使用 DNS 做 301 域名跳转和服务器跳转哪个好？#10</a></li>
+<li><a href="https://support.cloudflare.com/hc/en-us/articles/218411427#always-use-https" target="_blank" rel="external">Page Rules Tutorial</a></li>
+<li><a href="http://www.jianshu.com/p/4ec44dc6dad4" target="_blank" rel="external">什么叫 CNAME Flatten</a></li>
+<li><a href="https://support.cloudflare.com/hc/en-us/articles/204144518-SSL-FAQ" target="_blank" rel="external">What does flex and full SSL mean?</a></li>
+</ul>
 
       
     </div>
@@ -416,7 +445,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/blog/" rel="tag"># blog</a>
           
         </div>
       
@@ -429,8 +458,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/10/python-函数的5种参数/" rel="next" title="python 函数的5种参数">
-                <i class="fa fa-chevron-left"></i> python 函数的5种参数
+              <a href="/2017/08/28/Next主题配置/" rel="next" title="next主题配置">
+                <i class="fa fa-chevron-left"></i> next主题配置
               </a>
             
           </div>
@@ -439,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/27/hexo搭建博客/" rel="prev" title="hexo搭建博客">
-                hexo搭建博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/30/奇怪的python整数/" rel="prev" title="奇怪的python整数">
+                奇怪的python整数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -493,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -593,6 +631,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SSL"><span class="nav-number">1.1.</span> <span class="nav-text">1.SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DNS解析"><span class="nav-number">1.2.</span> <span class="nav-text">2.DNS解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-裸域-跳转www"><span class="nav-number">1.3.</span> <span class="nav-text">3.裸域@跳转www</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Rocket-Loader"><span class="nav-number">1.4.</span> <span class="nav-text">4.Rocket Loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-其他"><span class="nav-number">1.5.</span> <span class="nav-text">5.其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
