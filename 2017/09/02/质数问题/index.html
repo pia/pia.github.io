@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="algorithm,math," />
 
 
 
@@ -95,18 +95,20 @@
 
 
 
-<meta name="description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
-<meta name="keywords" content="python">
+<meta name="description" content="关于质数的问题通常分为以下3种情况：  求N以内的质数 求第N个质数 判断一个数是否为质数  针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。">
+<meta name="keywords" content="algorithm,math">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python变量作用域规则">
-<meta property="og:url" content="http://yoursite.com/2017/08/19/python变量作用域规则/index.html">
+<meta property="og:title" content="质数问题">
+<meta property="og:url" content="http://yoursite.com/2017/09/02/质数问题/index.html">
 <meta property="og:site_name" content="pia&#39;s Note">
-<meta property="og:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
+<meta property="og:description" content="关于质数的问题通常分为以下3种情况：  求N以内的质数 求第N个质数 判断一个数是否为质数  针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T13:56:20.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/ppia/img/master/Sieve_of_Eratosthenes_animation.gif">
+<meta property="og:updated_time" content="2017-09-02T03:57:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python变量作用域规则">
-<meta name="twitter:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
+<meta name="twitter:title" content="质数问题">
+<meta name="twitter:description" content="关于质数的问题通常分为以下3种情况：  求N以内的质数 求第N个质数 判断一个数是否为质数  针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ppia/img/master/Sieve_of_Eratosthenes_animation.gif">
 
 
 
@@ -136,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/19/python变量作用域规则/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/02/质数问题/"/>
 
 
 
 
 
-  <title>python变量作用域规则 | pia's Note</title>
+  <title>质数问题 | pia's Note</title>
   
 
 
@@ -269,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/19/python变量作用域规则/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/02/质数问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pia">
@@ -286,7 +288,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">python变量作用域规则</h1>
+          <h1 class="post-title" itemprop="name headline">质数问题</h1>
         
 
         <div class="post-meta">
@@ -298,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-19T22:28:49+08:00">
-                2017-08-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-02T11:51:54+08:00">
+                2017-09-02
               </time>
             
 
@@ -358,18 +360,35 @@
       
 
       
-        <p>首先看一下代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">b = <span class="number">5</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f1</span><span class="params">(a)</span>:</span></div><div class="line">    print(a)</div><div class="line">    print(b)</div><div class="line">    b = <span class="number">9</span></div><div class="line"></div><div class="line">f1(<span class="number">3</span>)</div></pre></td></tr></table></figure>
-<p>很容易认为输出3 5，但实际上：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py"</span>, line <span class="number">10</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    f(<span class="number">3</span>)</div><div class="line">  File <span class="string">"/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py"</span>, line <span class="number">6</span>, <span class="keyword">in</span> f</div><div class="line">    print(b)</div><div class="line">UnboundLocalError: local variable <span class="string">'b'</span> referenced before assignment</div><div class="line"></div><div class="line"></div><div class="line">Process finished <span class="keyword">with</span> exit code <span class="number">1</span></div></pre></td></tr></table></figure>
+        <p>关于质数的问题通常分为以下3种情况：</p>
+<ol>
+<li>求N以内的质数</li>
+<li>求第N个质数</li>
+<li>判断一个数是否为质数</li>
+</ol>
+<p>针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。</p>
 <a id="more"></a>
-<p>原因：<br>python不要求声明变量，<strong>假定函数声明中赋值的变量是局部变量</strong>。</p>
-<hr>
-<p>这是设计选择，防止在不知情的情况下获取全局变量。如果想让解释器把b当成全局变量，使用global声明：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> dis <span class="keyword">import</span> dis</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(a)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">global</span> b</div><div class="line"><span class="meta">... </span>    print(a)</div><div class="line"><span class="meta">... </span>    print(b)</div><div class="line"><span class="meta">... </span>    b = <span class="number">9</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f2(<span class="number">3</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">90</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">90</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
-<hr>
-<p>通过dis模块反汇编f1和f2字节码比较两者不同：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dis(f1)</div><div class="line">  <span class="number">2</span>           <span class="number">0</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">              <span class="number">2</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">              <span class="number">4</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">              <span class="number">6</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">3</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">10</span> LOAD_FAST                <span class="number">1</span> (b)</div><div class="line">             <span class="number">12</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">14</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">4</span>          <span class="number">16</span> LOAD_CONST               <span class="number">1</span> (<span class="number">9</span>)</div><div class="line">             <span class="number">18</span> STORE_FAST               <span class="number">1</span> (b)</div><div class="line">             <span class="number">20</span> LOAD_CONST               <span class="number">0</span> (<span class="keyword">None</span>)</div><div class="line">             <span class="number">22</span> RETURN_VALUE</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dis(f2)</div><div class="line">  <span class="number">3</span>           <span class="number">0</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">              <span class="number">2</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">              <span class="number">4</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">              <span class="number">6</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">4</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">10</span> LOAD_GLOBAL              <span class="number">1</span> (b)</div><div class="line">             <span class="number">12</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">14</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">5</span>          <span class="number">16</span> LOAD_CONST               <span class="number">1</span> (<span class="number">9</span>)</div><div class="line">             <span class="number">18</span> STORE_GLOBAL             <span class="number">1</span> (b)</div><div class="line">             <span class="number">20</span> LOAD_CONST               <span class="number">0</span> (<span class="keyword">None</span>)</div><div class="line">             <span class="number">22</span> RETURN_VALUE</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="1-试除法"><a href="#1-试除法" class="headerlink" title="1.试除法"></a>1.<a href="https://zh.wikipedia.org/zh-hans/%E8%AF%95%E9%99%A4%E6%B3%95" target="_blank" rel="external">试除法</a></h2><p>试除法是素数测试最简单的一种，但也有一些技巧。为了减少不必要的计算，除数需要满足以下条件：</p>
+<ul>
+<li>从2开始，√n结束；</li>
+<li>奇数；</li>
+<li>如果是第1、2种情况，还可以把已算出的质数保存起来，这样只要尝试小于√n的质数就可以了</li>
+</ul>
+<h2 id="2-筛法"><a href="#2-筛法" class="headerlink" title="2.筛法"></a>2.筛法</h2><p>筛法可以计算N以内的质数，对于前两种情况筛法的效率是比较高的。如果要算第N个质数，根据质数定理，第N个质数大约在<code>N*log(N)</code>左右。</p>
+<h3 id="2-1-一般的线形筛法-埃式筛法"><a href="#2-1-一般的线形筛法-埃式筛法" class="headerlink" title="2.1 一般的线形筛法(埃式筛法)"></a>2.1 一般的线形筛法(埃式筛法)</h3><p>给出要筛数值的范围n，找出√n以内的素数p1、p2…pk。先用2去筛，即把2留下，把2的倍数剔除掉；再用下一个素数，也就是3筛，把3留下，把3的倍数剔除掉；接下去用下一个素数5筛，把5留下，把5的倍数剔除掉；不断重复下去……。</p>
+<p><img src="https://raw.githubusercontent.com/ppia/img/master/Sieve_of_Eratosthenes_animation.gif" alt="Sieve_of_Eratosthenes_animation"></p>
+<h3 id="2-2-快速线性筛法"><a href="#2-2-快速线性筛法" class="headerlink" title="2.2 快速线性筛法"></a>2.2 快速线性筛法</h3><p>埃式筛法会导致重复筛选，比如3和5的倍数里都有15。快速线性筛法几乎是线性的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计算第10001个质数</span></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_divisible</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: x % n &gt; <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">odd_list</span><span class="params">()</span>:</span></div><div class="line">    n = <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        n += <span class="number">2</span></div><div class="line">        <span class="keyword">yield</span> n</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">primes</span><span class="params">(end_num)</span>:</span></div><div class="line">    li = odd_list()</div><div class="line">    <span class="keyword">yield</span> <span class="number">2</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        n = next(li)</div><div class="line">        <span class="keyword">if</span> n &gt; end_num:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> n</div><div class="line">        li = filter(not_divisible(n), li)</div><div class="line"></div><div class="line"></div><div class="line">start = time.clock()</div><div class="line">print(list(primes(<span class="number">105930</span>))[<span class="number">10000</span>])</div><div class="line">print(time.clock() - start)</div></pre></td></tr></table></figure>
+<p>测试运行了13.173756秒求出第10001个质数，对python不熟悉，以后再优化。<code>TODO</code></p>
+<h2 id="3-米勒-拉宾素性检验"><a href="#3-米勒-拉宾素性检验" class="headerlink" title="3.米勒-拉宾素性检验"></a>3.<a href="https://zh.wikipedia.org/wiki/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C" target="_blank" rel="external">米勒-拉宾素性检验</a></h2><p><code>TODO</code> 没看懂🌚</p>
+<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><ul>
+<li>查素数的网站：<a href="http://www.bigprimes.net" target="_blank" rel="external">http://www.bigprimes.net</a></li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://program-think.blogspot.com/2011/12/prime-algorithm-1.html" target="_blank" rel="external">求质数算法的 N 种境界[1] - 试除法和初级筛法</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Prime_number_theorem" target="_blank" rel="external">Prime number theorem</a></li>
+<li><a href="https://www.zhihu.com/question/24942373" target="_blank" rel="external">如何编程最快速度求出两百万以内素数个数</a></li>
+</ul>
 
       
     </div>
@@ -416,7 +435,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
           
         </div>
       
@@ -429,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/10/python-函数的5种参数/" rel="next" title="python 函数的5种参数">
-                <i class="fa fa-chevron-left"></i> python 函数的5种参数
+              <a href="/2017/08/30/奇怪的python整数/" rel="next" title="奇怪的python整数">
+                <i class="fa fa-chevron-left"></i> 奇怪的python整数
               </a>
             
           </div>
@@ -438,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/27/hexo搭建博客/" rel="prev" title="hexo搭建博客">
-                hexo搭建博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,8 +510,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -593,6 +619,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-试除法"><span class="nav-number">1.</span> <span class="nav-text">1.试除法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-筛法"><span class="nav-number">2.</span> <span class="nav-text">2.筛法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-一般的线形筛法-埃式筛法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 一般的线形筛法(埃式筛法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-快速线性筛法"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 快速线性筛法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-米勒-拉宾素性检验"><span class="nav-number">3.</span> <span class="nav-text">3.米勒-拉宾素性检验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">4.</span> <span class="nav-text">Others</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
