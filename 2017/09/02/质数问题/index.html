@@ -104,7 +104,7 @@
 <meta property="og:description" content="关于质数的问题通常分为以下3种情况：  求N以内的质数 求第N个质数 判断一个数是否为质数  针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ppia/img/master/Sieve_of_Eratosthenes_animation.gif">
-<meta property="og:updated_time" content="2017-09-02T03:57:31.000Z">
+<meta property="og:updated_time" content="2017-09-03T15:07:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="质数问题">
 <meta name="twitter:description" content="关于质数的问题通常分为以下3种情况：  求N以内的质数 求第N个质数 判断一个数是否为质数  针对这3种情况适合不同的解法，本文对常见的方法进行讨论总结。">
@@ -121,7 +121,7 @@
     sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -378,8 +378,9 @@
 <h3 id="2-1-一般的线形筛法-埃式筛法"><a href="#2-1-一般的线形筛法-埃式筛法" class="headerlink" title="2.1 一般的线形筛法(埃式筛法)"></a>2.1 一般的线形筛法(埃式筛法)</h3><p>给出要筛数值的范围n，找出√n以内的素数p1、p2…pk。先用2去筛，即把2留下，把2的倍数剔除掉；再用下一个素数，也就是3筛，把3留下，把3的倍数剔除掉；接下去用下一个素数5筛，把5留下，把5的倍数剔除掉；不断重复下去……。</p>
 <p><img src="https://raw.githubusercontent.com/ppia/img/master/Sieve_of_Eratosthenes_animation.gif" alt="Sieve_of_Eratosthenes_animation"></p>
 <h3 id="2-2-快速线性筛法"><a href="#2-2-快速线性筛法" class="headerlink" title="2.2 快速线性筛法"></a>2.2 快速线性筛法</h3><p>埃式筛法会导致重复筛选，比如3和5的倍数里都有15。快速线性筛法几乎是线性的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计算第10001个质数</span></div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_divisible</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x: x % n &gt; <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">odd_list</span><span class="params">()</span>:</span></div><div class="line">    n = <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        n += <span class="number">2</span></div><div class="line">        <span class="keyword">yield</span> n</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">primes</span><span class="params">(end_num)</span>:</span></div><div class="line">    li = odd_list()</div><div class="line">    <span class="keyword">yield</span> <span class="number">2</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        n = next(li)</div><div class="line">        <span class="keyword">if</span> n &gt; end_num:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">yield</span> n</div><div class="line">        li = filter(not_divisible(n), li)</div><div class="line"></div><div class="line"></div><div class="line">start = time.clock()</div><div class="line">print(list(primes(<span class="number">105930</span>))[<span class="number">10000</span>])</div><div class="line">print(time.clock() - start)</div></pre></td></tr></table></figure>
-<p>测试运行了13.173756秒求出第10001个质数，对python不熟悉，以后再优化。<code>TODO</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 计算第10001个质数</span></div><div class="line"><span class="comment"># 埃式筛法</span></div><div class="line"><span class="keyword">from</span> math <span class="keyword">import</span> sqrt</div><div class="line"></div><div class="line">n = <span class="number">105930</span></div><div class="line">p = [<span class="keyword">True</span>] * (n + <span class="number">1</span>)</div><div class="line">p[<span class="number">0</span>], p[<span class="number">1</span>] = <span class="keyword">False</span>, <span class="keyword">False</span></div><div class="line">index = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, int(sqrt(n) + <span class="number">1</span>)):</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> p[i]:</div><div class="line">        <span class="keyword">continue</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(i * <span class="number">2</span>, n + <span class="number">1</span>, i):</div><div class="line">        p[j] = <span class="keyword">False</span></div><div class="line">primes = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(n + <span class="number">1</span>) <span class="keyword">if</span> p[x]]</div><div class="line"></div><div class="line">index = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">105930</span>):</div><div class="line">    <span class="keyword">if</span> p[i]:</div><div class="line">        index += <span class="number">1</span></div><div class="line">        <span class="keyword">if</span> index == <span class="number">10001</span>:</div><div class="line">            print(i)</div></pre></td></tr></table></figure>
+<p>测试运行了0.6秒求出第10001个质数，</p>
+<p>快速线性筛法以后再写<code>TODO</code></p>
 <h2 id="3-米勒-拉宾素性检验"><a href="#3-米勒-拉宾素性检验" class="headerlink" title="3.米勒-拉宾素性检验"></a>3.<a href="https://zh.wikipedia.org/wiki/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C" target="_blank" rel="external">米勒-拉宾素性检验</a></h2><p><code>TODO</code> 没看懂🌚</p>
 <h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><ul>
 <li>查素数的网站：<a href="http://www.bigprimes.net" target="_blank" rel="external">http://www.bigprimes.net</a></li>
@@ -573,12 +574,12 @@
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/pia" target="_blank" title="Github">
+                <a href="https://github.com/pia" target="_blank" title="GitHub">
                   
-                    <i class="fa fa-fw fa-globe"></i>
+                    <i class="fa fa-fw fa-github"></i>
                   
                     
-                      Github
+                      GitHub
                     
                 </a>
               </span>
@@ -668,6 +669,11 @@
 
   <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共4.3k字</span>
+</div>
 
         
 
