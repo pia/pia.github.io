@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Naive Note">
 <meta property="og:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-30T13:56:20.000Z">
+<meta property="og:updated_time" content="2017-10-07T08:20:42.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python变量作用域规则">
 <meta name="twitter:description" content="首先看一下代码： 12345678b = 5def f1(a):    print(a)    print(b)    b = 9f1(3) 很容易认为输出3 5，但实际上： 123456789103Traceback (most recent call last):  File &quot;/Users/x/Documents/pyCharmProject/fluent-python/7-5 var.py">
@@ -365,6 +365,9 @@
 <a id="more"></a>
 <p>原因：<br>python不要求声明变量，<strong>假定函数声明中赋值的变量是局部变量</strong>。</p>
 <hr>
+<p>update: 2017.10.7</p>
+<p>任何含有‘b = ’形式的语句都会让python将之视为local variable 。</p>
+<hr>
 <p>这是设计选择，防止在不知情的情况下获取全局变量。如果想让解释器把b当成全局变量，使用global声明：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> dis <span class="keyword">import</span> dis</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">f2</span><span class="params">(a)</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">global</span> b</div><div class="line"><span class="meta">... </span>    print(a)</div><div class="line"><span class="meta">... </span>    print(b)</div><div class="line"><span class="meta">... </span>    b = <span class="number">9</span></div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f2(<span class="number">3</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">90</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="number">90</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <hr>
@@ -511,7 +514,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -629,7 +632,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共9.2k字</span>
+  <span class="post-count">博客全站共9.7k字</span>
 </div>
 
         

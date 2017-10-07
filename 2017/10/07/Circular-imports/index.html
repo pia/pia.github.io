@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="现象112345678&amp;gt;&amp;gt;&amp;gt; a = 8&amp;gt;&amp;gt;&amp;gt; b = 8&amp;gt;&amp;gt;&amp;gt; a is bTrue&amp;gt;&amp;gt;&amp;gt; a = 800&amp;gt;&amp;gt;&amp;gt; b = 800&amp;gt;&amp;gt;&amp;gt; a is bFalse">
+<meta name="description" content="123456# first.pyfrom second import bdef a():    print(&apos;This is a&apos;) 123456# second.pyfrom first import adef b():    print(&apos;This is b&apos;)">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="奇怪的python整数">
-<meta property="og:url" content="http://yoursite.com/2017/08/30/奇怪的python整数/index.html">
+<meta property="og:title" content="Circular imports">
+<meta property="og:url" content="http://yoursite.com/2017/10/07/Circular-imports/index.html">
 <meta property="og:site_name" content="Naive Note">
-<meta property="og:description" content="现象112345678&amp;gt;&amp;gt;&amp;gt; a = 8&amp;gt;&amp;gt;&amp;gt; b = 8&amp;gt;&amp;gt;&amp;gt; a is bTrue&amp;gt;&amp;gt;&amp;gt; a = 800&amp;gt;&amp;gt;&amp;gt; b = 800&amp;gt;&amp;gt;&amp;gt; a is bFalse">
+<meta property="og:description" content="123456# first.pyfrom second import bdef a():    print(&apos;This is a&apos;) 123456# second.pyfrom first import adef b():    print(&apos;This is b&apos;)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-31T15:18:21.000Z">
+<meta property="og:updated_time" content="2017-10-07T13:30:24.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="奇怪的python整数">
-<meta name="twitter:description" content="现象112345678&amp;gt;&amp;gt;&amp;gt; a = 8&amp;gt;&amp;gt;&amp;gt; b = 8&amp;gt;&amp;gt;&amp;gt; a is bTrue&amp;gt;&amp;gt;&amp;gt; a = 800&amp;gt;&amp;gt;&amp;gt; b = 800&amp;gt;&amp;gt;&amp;gt; a is bFalse">
+<meta name="twitter:title" content="Circular imports">
+<meta name="twitter:description" content="123456# first.pyfrom second import bdef a():    print(&apos;This is a&apos;) 123456# second.pyfrom first import adef b():    print(&apos;This is b&apos;)">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/30/奇怪的python整数/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/07/Circular-imports/"/>
 
 
 
 
 
-  <title>奇怪的python整数 | Naive Note</title>
+  <title>Circular imports | Naive Note</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/30/奇怪的python整数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/07/Circular-imports/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pia">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">奇怪的python整数</h1>
+          <h1 class="post-title" itemprop="name headline">Circular imports</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T22:22:47+08:00">
-                2017-08-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-07T21:29:04+08:00">
+                2017-10-07
               </time>
             
 
@@ -358,30 +358,29 @@
       
 
       
-        <h2 id="现象1"><a href="#现象1" class="headerlink" title="现象1"></a>现象1</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">8</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">8</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">800</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">800</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># first.py</span></div><div class="line"><span class="keyword">from</span> second <span class="keyword">import</span> b</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is a'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># second.py</span></div><div class="line"><span class="keyword">from</span> first <span class="keyword">import</span> a</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is b'</span>)</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>可以看到，所有值相同的‘小整数’在同一块内存区域。使用<code>id</code>深入研究：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(a)</div><div class="line"><span class="number">4297636352</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(b)</div><div class="line"><span class="number">4297636608</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>(id(a) - id(b)) / (a - b)</div><div class="line"><span class="number">32.0</span></div></pre></td></tr></table></figure>
-<p>看起来对于小整数有专门的表／数组存放，每个整数占据32个字节。</p>
-<p><strong>原因：</strong><br>出于性能考虑，python将小整数对象缓存，保存到名为small_ints的链表中。在python整个生命周期内，对需要引用这些整数对象的地方，不再重新创建对象，直接引用缓存中的对象。凡是[-5, 256]区间的小对象就从small_ints中取。</p>
-<h2 id="现象2"><a href="#现象2" class="headerlink" title="现象2"></a>现象2</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a == b</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-<p><code>is</code>和<code>==</code>区别：</p>
+<p>执行first.py, 因为循环导入出错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"/Users/*/Documents/pyCharmProject/learnPy/first.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    <span class="keyword">from</span> second <span class="keyword">import</span> b</div><div class="line">  File <span class="string">"/Users/*/Documents/pyCharmProject/learnPy/second.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    <span class="keyword">from</span> first <span class="keyword">import</span> a</div><div class="line">  File <span class="string">"/Users/*/Documents/pyCharmProject/learnPy/first.py"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    <span class="keyword">from</span> second <span class="keyword">import</span> b</div><div class="line">ImportError: cannot <span class="keyword">import</span> name <span class="string">'b'</span></div><div class="line"></div><div class="line">Process finished <span class="keyword">with</span> exit code <span class="number">1</span></div></pre></td></tr></table></figure>
+<h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>记住以下几点：</p>
 <ul>
-<li><code>is</code>比较两对象的id值是否相等，即比较两对象是否为同一实例对象，是否指向同一个内存地址</li>
-<li><code>==</code>比较两对象的内容是否相等，默认调用<code>__eq__()</code>方法</li>
+<li>‘import’和’from xxx import yyy’都是可执行语句。它们在读到那行时会被执行；</li>
+<li>如果一个模块不在sys.modules中，import语句会在sys.modules中创建新的模块入口，然后执行那个模块。直到执行完才会把’control’还给’calling module’；</li>
+<li>如果模块已经在sys.modules中了，import语句只会简单的返回那个模块（无论是否已经执行完）。这就是为什么循环导入可能返回部分空的模块；</li>
+<li>最后一点，python some_file.py 的时候，some_file.py 自己也成为 module，并且这个 module 的名字叫 <code>__main__</code>，如果 some_file.py 直接或者间接地导入 some_file.py 自己，则被导入的 some_file.py 会成为一个新的 module，且这个新的 module 不是原来的 <code>__main__</code>。</li>
 </ul>
-<h2 id="现象3"><a href="#现象3" class="headerlink" title="现象3"></a>现象3</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>c = <span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></div><div class="line"><span class="meta">... </span>    a = <span class="number">257</span></div><div class="line"><span class="meta">... </span>    b = <span class="number">257</span></div><div class="line"><span class="meta">... </span>    print(a <span class="keyword">is</span> b)</div><div class="line"><span class="meta">... </span>    print(a <span class="keyword">is</span> c)</div><div class="line">...</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>foo()</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-<p><strong>原因：</strong></p>
-<blockquote>
-<p>A Python program is constructed from code blocks. A block is a piece of Python program text that is executed as a unit. The following are blocks: a module, a function body, and a class definition. Each command typed interactively is a block. A script file (a file given as standard input to the interpreter or specified as a command line argument to the interpreter) is a code block. A script command (a command specified on the interpreter command line with the ‘-c‘ option) is a code block. structure-of-a-program</p>
-</blockquote>
-<p>python为了提高性能，在同一个代码块中的对象，只要是值相同的 <strong>不可变对象</strong> ，不会重复创建。可以借助dis模块从字节码角度观察：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> dis</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dis.dis(foo)</div><div class="line">  <span class="number">2</span>           <span class="number">0</span> LOAD_CONST               <span class="number">1</span> (<span class="number">257</span>)</div><div class="line">              <span class="number">2</span> STORE_FAST               <span class="number">0</span> (a)</div><div class="line"></div><div class="line">  <span class="number">3</span>           <span class="number">4</span> LOAD_CONST               <span class="number">1</span> (<span class="number">257</span>)</div><div class="line">              <span class="number">6</span> STORE_FAST               <span class="number">1</span> (b)</div><div class="line"></div><div class="line">  <span class="number">4</span>           <span class="number">8</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">10</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">             <span class="number">12</span> LOAD_FAST                <span class="number">1</span> (b)</div><div class="line">             <span class="number">14</span> COMPARE_OP               <span class="number">8</span> (<span class="keyword">is</span>)</div><div class="line">             <span class="number">16</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">18</span> POP_TOP</div><div class="line"></div><div class="line">  <span class="number">5</span>          <span class="number">20</span> LOAD_GLOBAL              <span class="number">0</span> (<span class="keyword">print</span>)</div><div class="line">             <span class="number">22</span> LOAD_FAST                <span class="number">0</span> (a)</div><div class="line">             <span class="number">24</span> LOAD_GLOBAL              <span class="number">1</span> (c)</div><div class="line">             <span class="number">26</span> COMPARE_OP               <span class="number">8</span> (<span class="keyword">is</span>)</div><div class="line">             <span class="number">28</span> CALL_FUNCTION            <span class="number">1</span></div><div class="line">             <span class="number">30</span> POP_TOP</div><div class="line">             <span class="number">32</span> LOAD_CONST               <span class="number">0</span> (<span class="keyword">None</span>)</div><div class="line">             <span class="number">34</span> RETURN_VALUE</div></pre></td></tr></table></figure>
-<p>可以看到a、b都是从同一个位置获取的(co_consts[1])</p>
+<h2 id="Solutions"><a href="#Solutions" class="headerlink" title="Solutions"></a>Solutions</h2><p>1、把`from x import y’移到后面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># first.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is a'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">from</span> second <span class="keyword">import</span> b</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    b()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># second.py</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is b'</span>)</div><div class="line">    <span class="keyword">from</span> first <span class="keyword">import</span> a</div><div class="line">    a()</div></pre></td></tr></table></figure>
+<p>2、改成import模块本身</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># first.py</span></div><div class="line"><span class="keyword">import</span> second</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is a'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    second.b()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># second.py</span></div><div class="line"><span class="keyword">import</span> first</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">b</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'This is b'</span>)</div><div class="line">    first.a()</div></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://kate.io/blog/2017/08/22/weird-python-integers/" target="_blank" rel="external">Weird Python Integers</a></li>
-<li><a href="https://kate.io/blog/2017/08/24/python-constants-in-bytecode/" target="_blank" rel="external">Weird Python Integers Part II: Constants in Bytecode</a></li>
-<li><a href="http://python.jobbole.com/87845/" target="_blank" rel="external">Python 解惑：整数比较</a></li>
+<li><a href="https://stackoverflow.com/questions/744373/circular-or-cyclic-imports-in-python" target="_blank" rel="external">Circular (or cyclic) imports in Python</a></li>
+<li><a href="https://groups.google.com/forum/#!topic/comp.lang.python/HYChxtsrhnw" target="_blank" rel="external">Coping with cyclic imports</a></li>
+<li><a href="https://www.v2ex.com/t/395827" target="_blank" rel="external">#1 Reply by geelaw</a></li>
+<li><em>Mastering Python</em> P45-47</li>
 </ul>
 
       
@@ -442,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/29/cloudflare踩坑/" rel="next" title="cloudflare踩坑">
-                <i class="fa fa-chevron-left"></i> cloudflare踩坑
+              <a href="/2017/10/04/First-Time-Git-Setup/" rel="next" title="First-Time Git Setup">
+                <i class="fa fa-chevron-left"></i> First-Time Git Setup
               </a>
             
           </div>
@@ -451,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/02/质数问题/" rel="prev" title="质数问题">
-                质数问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -625,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象1"><span class="nav-number">1.</span> <span class="nav-text">现象1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现象2"><span class="nav-number">2.</span> <span class="nav-text">现象2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现象3"><span class="nav-number">3.</span> <span class="nav-text">现象3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Analysis"><span class="nav-number">1.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solutions"><span class="nav-number">2.</span> <span class="nav-text">Solutions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
