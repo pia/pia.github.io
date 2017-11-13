@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="machine learning," />
 
 
 
@@ -95,18 +95,18 @@
 
 
 
-<meta name="description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
-<meta name="keywords" content="blog">
+<meta name="description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });      前言信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。无线电通信中，信息论告诉我们如何对消息设计最优编码以及消息的期望长度。机器学习中，信息论也可应用于连续性变量,此时某些消息长度的解释不再适用。">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cloudflare踩坑">
-<meta property="og:url" content="http://yoursite.com/2017/08/29/cloudflare踩坑/index.html">
+<meta property="og:title" content="Entropy">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/Entropy/index.html">
 <meta property="og:site_name" content="Naive Note">
-<meta property="og:description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
+<meta property="og:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });      前言信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。无线电通信中，信息论告诉我们如何对消息设计最优编码以及消息的期望长度。机器学习中，信息论也可应用于连续性变量,此时某些消息长度的解释不再适用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-01T13:50:12.000Z">
+<meta property="og:updated_time" content="2017-11-13T12:35:29.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cloudflare踩坑">
-<meta name="twitter:description" content="前言cloudflare可以一键https、优化网站速度，还有各种自定义功能。">
+<meta name="twitter:title" content="Entropy">
+<meta name="twitter:description" content="MathJax.Hub.Config({ tex2jax: {inlineMath: [[&apos;$&apos;,&apos;$&apos;], [&apos;\\(&apos;,&apos;\\)&apos;]]} });      前言信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。无线电通信中，信息论告诉我们如何对消息设计最优编码以及消息的期望长度。机器学习中，信息论也可应用于连续性变量,此时某些消息长度的解释不再适用。">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/29/cloudflare踩坑/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/Entropy/"/>
 
 
 
 
 
-  <title>cloudflare踩坑 | Naive Note</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Entropy | Naive Note</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/cloudflare踩坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/Entropy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="pia">
@@ -286,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cloudflare踩坑</h1>
+          <h1 class="post-title" itemprop="name headline">Entropy</h1>
         
 
         <div class="post-meta">
@@ -298,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T22:36:46+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T19:10:00+08:00">
+                2017-10-19
               </time>
             
 
@@ -321,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Computer-Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Computer Skills</span>
+                  <a href="/categories/Algorithm-and-Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm and Computer Science</span>
                   </a>
                 </span>
 
@@ -358,47 +358,30 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>cloudflare可以一键https、优化网站速度，还有各种自定义功能。</p>
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>信息论是应用数学的一个分支，主要研究的是对一个信号包含信息的多少进行量化。无线电通信中，信息论告诉我们如何对消息设计最优编码以及消息的期望长度。机器学习中，信息论也可应用于连续性变量,此时某些消息长度的解释不再适用。</p>
 <a id="more"></a>
-<h2 id="1-SSL"><a href="#1-SSL" class="headerlink" title="1.SSL"></a>1.SSL</h2><p>cloudflare提供免费的一键ssl证书，只要在dnss配置里选上‘DNS and HTTP proxy(CDN)’，这样解析dns结果为cloudflare的ip<br>但是配置后默认http和https协议都可以访问，需要设置always use https：</p>
-<ol>
-<li><p>Page Rules里添加跳转规则，免费版可以设置3条。将‘<a href="http://*tech.cx/\*’设置always" target="_blank" rel="external">http://*tech.cx/\*’设置always</a> use https</p>
-</li>
-<li><p>更简单方法是在crypto里勾选always us https即可</p>
-</li>
-</ol>
-<p>对ssl的设置有几个选项：</p>
-<ul>
-<li>Flexible SSL：仅cloudflare到客户端部分加密</li>
-<li>SSL Full：全程加密，服务器上可使用自签证书</li>
-<li>SSL FULL(strict)：全程加密，服务器上需要CA签发的证书</li>
-</ul>
-<p>更多了解：<a href="https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-?flash_digest=4463587fe24c9f8a1ea3c74f13bb969a88208c5b" target="_blank" rel="external">click</a></p>
-<h2 id="2-DNS解析"><a href="#2-DNS解析" class="headerlink" title="2.DNS解析"></a>2.DNS解析</h2><p>不需要使用cdn的记录，不要选上‘DNS and HTTP proxy(CDN)’，否则会解析错误。🌚</p>
-<h2 id="3-裸域-跳转www"><a href="#3-裸域-跳转www" class="headerlink" title="3.裸域@跳转www"></a>3.裸域@跳转www</h2><p>裸域设置CNAME到 www.example.com </p>
-<p>主机头设置CNAME记录违反RFC，所以cloudflare会自动使用CNAME Flattening：</p>
-<blockquote>
-<p>Cloudflare uses CNAME Flattening to present a CNAME as an A record. The Cloudflare server generating the response follows the CNAME chain so that the response to the request from the client (for example, the browser) contains only non-CNAME data – usually, an IP address. This effectively creates an A or an AAAA record. Without flattening, Cloudflare would serve the CNAME record directly to the recursor (the DNS resolver that translates the domain name to an IP address).</p>
-<p>CNAMEs can cause confusion when you wish to have a CNAME for a domain (for example, a CNAME from example.com to example.herokuapp.com) but also wish to have another type of DNS record at the root, for example MX records for mail delivery. The RFC requires CNAMEs to be exclusive to a DNS zone when present and the example presented may cause problems when receiving email, since the RFC also requires an MX record to map to an A record and not a CNAME. CNAME Flattening ensures email delivery because the CNAME is translated to an A record.</p>
-<p>Some other DNS providers call similar functionality (without RFC compliance) ALIAS or ANAME records.</p>
-</blockquote>
-<p>也可以用page rules或者解析到自己服务器上再跳转。</p>
-<h2 id="4-Rocket-Loader"><a href="#4-Rocket-Loader" class="headerlink" title="4.Rocket Loader"></a>4.Rocket Loader</h2><ul>
-<li>Decreasing the number of network requests by bundling JavaScript files, even third party resources, to avoid slowing down page rendering</li>
-<li>Asynchronously loading scripts, including third party scripts, so that they do not block the content of your page from loading immediately</li>
-<li>Caching scripts locally (using LocalStorage, available on most browsers and smart phones) so they aren’t refetched unless necessary</li>
-</ul>
-<h2 id="5-其他"><a href="#5-其他" class="headerlink" title="5.其他"></a>5.其他</h2><ul>
-<li>Auto Minify:优化CSS、JavaScript、HTML，减少体积</li>
-<li>默认支持ipv6</li>
-<li>一些有用的app: Google Analytics/Tweet This!</li>
-</ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
-<li><a href="https://support.cloudflare.com/hc/en-us/articles/200169056-CNAME-Flattening-RFC-compliant-support-for-CNAME-at-the-root" target="_blank" rel="external">CNAME Flattening: RFC-compliant support for CNAME at the root</a></li>
-<li><a href="https://www.v2ex.com/t/289721" target="_blank" rel="external">使用 DNS 做 301 域名跳转和服务器跳转哪个好？#10</a></li>
-<li><a href="https://support.cloudflare.com/hc/en-us/articles/218411427#always-use-https" target="_blank" rel="external">Page Rules Tutorial</a></li>
-<li><a href="http://www.jianshu.com/p/4ec44dc6dad4" target="_blank" rel="external">什么叫 CNAME Flatten</a></li>
-<li><a href="https://support.cloudflare.com/hc/en-us/articles/204144518-SSL-FAQ" target="_blank" rel="external">What does flex and full SSL mean?</a></li>
+<h2 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h2><p>电讯通信中，使用哈夫曼编码可以使平均编码位数降到最低。可以看出，同样的信息，有一个最优编码方案。通过计算其信息熵、交叉熵可以量化的进行比较。</p>
+<h2 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h2><p>信息熵代表了考察对象的‘净信息量’，机器学习中代表消除系统不确定性所需要付出的最小努力的大小。</p>
+<p>信息论中，若一个符号字符串中每个字符的出现概率 $p _ 2 $ 已知，则可利用信息熵估计每个符号编码所需的平均最小位数。</p>
+<p>$$ H = -\mathop { \sum }_{i} (p_i \cdot log_2 (p_i)) $$</p>
+<h2 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h2><p>在对符号编码时，如果假设了其他的概率 $q_i$ 而非真实概率 $p_i$ ,则每个符号所需的编码长度就会更大。这正是交叉熵发挥作用的时候。它允许用户以另外一种次优编码方案计算对同一个字符串进行编码所需的平均最小位数。即<em>衡量在给定真实分布下，使用非真实分布的策略消除系统的不确定性所需要付出的努力的大小</em>。</p>
+<p>$$ H = -\mathop{\sum}_{i} (p_i \cdot log_2 (q_i)) $$</p>
+<p>当$p=q$时，交叉熵取得最小值。因此，可利用交叉熵比较一个分布与另一个分布的“吻合”情况。交叉熵越接近于熵，q便是针对p更好的逼近。实际上，模型的输出与期望输出越接近，交叉熵也会越小，这正是损失函数所需要的。</p>
+<p>在对熵最小化时，将 $log_2$ 替换为 $log$ 完全没有任何问题，因为两者只相差一个常系数。</p>
+<h2 id="相对熵"><a href="#相对熵" class="headerlink" title="相对熵"></a>相对熵</h2><p>相对熵 = 交叉熵 - 信息熵</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.zhihu.com/question/41252833" target="_blank" rel="external">如何通俗的解释交叉熵与相对熵?</a></li>
+<li><em>《深度学习》</em> p65-68</li>
+<li><em>《面向机器智能的TensorFlow实践》</em> p80-81</li>
 </ul>
 
       
@@ -446,7 +429,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag"># blog</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
         </div>
       
@@ -459,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/28/Next主题配置/" rel="next" title="next主题配置">
-                <i class="fa fa-chevron-left"></i> next主题配置
+              <a href="/2017/10/07/Circular-imports/" rel="next" title="Circular imports">
+                <i class="fa fa-chevron-left"></i> Circular imports
               </a>
             
           </div>
@@ -468,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/30/奇怪的python整数/" rel="prev" title="奇怪的python整数">
-                奇怪的python整数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -642,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SSL"><span class="nav-number">1.1.</span> <span class="nav-text">1.SSL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-DNS解析"><span class="nav-number">1.2.</span> <span class="nav-text">2.DNS解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-裸域-跳转www"><span class="nav-number">1.3.</span> <span class="nav-text">3.裸域@跳转www</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Rocket-Loader"><span class="nav-number">1.4.</span> <span class="nav-text">4.Rocket Loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-其他"><span class="nav-number">1.5.</span> <span class="nav-text">5.其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈夫曼编码"><span class="nav-number">2.</span> <span class="nav-text">哈夫曼编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息熵"><span class="nav-number">3.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交叉熵"><span class="nav-number">4.</span> <span class="nav-text">交叉熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相对熵"><span class="nav-number">5.</span> <span class="nav-text">相对熵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
