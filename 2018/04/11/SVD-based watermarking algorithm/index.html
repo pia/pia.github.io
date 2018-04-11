@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="0 引言数字水印就是向欲被保护的多媒体数据嵌入某种信息 ( 即水印)以保护所有者的权益。一个有效的水印算法框架至少应满足下面两个特性: 不可觉察性( Imperceptibility): 即原始的数据文档和添加水印后的数据文档对人的感觉器官应是一样的; 鲁棒性( Robustness): 给定一个水印文档，非授权的个人或团体在使文档可用的情况下无法剔除水印。鲁棒性问题对数字水印非常重要。有效的数字">
+<meta name="keywords" content="ML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVD-based watermarking algorithm">
+<meta property="og:url" content="http://yoursite.com/2018/04/11/SVD-based watermarking algorithm/index.html">
+<meta property="og:site_name" content="Naive Note">
+<meta property="og:description" content="0 引言数字水印就是向欲被保护的多媒体数据嵌入某种信息 ( 即水印)以保护所有者的权益。一个有效的水印算法框架至少应满足下面两个特性: 不可觉察性( Imperceptibility): 即原始的数据文档和添加水印后的数据文档对人的感觉器官应是一样的; 鲁棒性( Robustness): 给定一个水印文档，非授权的个人或团体在使文档可用的情况下无法剔除水印。鲁棒性问题对数字水印非常重要。有效的数字">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/ppia/img/master/photo_2018-04-11_15-07-24.jpg">
+<meta property="og:updated_time" content="2018-04-11T07:31:26.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SVD-based watermarking algorithm">
+<meta name="twitter:description" content="0 引言数字水印就是向欲被保护的多媒体数据嵌入某种信息 ( 即水印)以保护所有者的权益。一个有效的水印算法框架至少应满足下面两个特性: 不可觉察性( Imperceptibility): 即原始的数据文档和添加水印后的数据文档对人的感觉器官应是一样的; 鲁棒性( Robustness): 给定一个水印文档，非授权的个人或团体在使文档可用的情况下无法剔除水印。鲁棒性问题对数字水印非常重要。有效的数字">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ppia/img/master/photo_2018-04-11_15-07-24.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/11/SVD-based watermarking algorithm/"/>
+
+
+
+
+
+  <title>SVD-based watermarking algorithm | Naive Note</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Naive Note</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/11/SVD-based watermarking algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="pia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Naive Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SVD-based watermarking algorithm</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T14:29:37+08:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm-and-Computer-Science/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm and Computer Science</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0-引言"><a href="#0-引言" class="headerlink" title="0 引言"></a>0 引言</h2><p>数字水印就是向欲被保护的多媒体数据嵌入某种信息 ( 即水印)以保护所有者的权益。一个有效的水印算法框架至少应满足下面两个特性: 不可觉察性( Imperceptibility): 即原始的数据文档和添加水印后的数据文档对人的感觉器官应是一样的; 鲁棒性( Robustness): 给定一个水印文档，非授权的个人或团体在使文档可用的情况下无法剔除水印。鲁棒性问题对数字水印非常重要。有效的数字水印应该能够承受大量不同的物理和几何失真, 包括有意的( 如恶意攻击)或无意的( 如图像压缩、滤波、扫描与复印、噪声污染、尺寸变化等等) 。显然在经过这些操作后, 鲁棒的水印算法应仍能从水印图像中提取出嵌入的水印或证明水印的存在。如果不掌握水印的所有有关知识，数据产品的版权保护标志应该很难被伪造。若攻击者试图删除水印则将导致多媒体产品的彻底破坏。图像的水印技术根据水印嵌入的方式可以大致分为两类: 空域技术(水印被直接嵌入在图像的亮度值上) 和变换域技术( 将图像做某种数学变换，然后水印被嵌入于变换系数中) 。从目前的情况看, 变换域方法正变得日益普遍。因为变换域方法通常都具有很好的鲁棒性, 对图像压缩、常用的图像滤波以及噪声均有一定的抵抗力。</p>
+<a id="more"></a>
+<h2 id="1-SVD-应用于数字水印"><a href="#1-SVD-应用于数字水印" class="headerlink" title="1 SVD 应用于数字水印"></a>1 SVD 应用于数字水印</h2><p>为了方便讨论假设图像矩阵A是n x n的方阵，W=(w1, w2, … , wn) 代表水印信息。</p>
+<h3 id="1-1-水印嵌入"><a href="#1-1-水印嵌入" class="headerlink" title="1.1    水印嵌入"></a>1.1    水印嵌入</h3><p>1)    利用公式 （1） 对矩阵 A 进行 SVD 分解， 计算出对角阵 D， 准备嵌入水印。</p>
+<p>A=UDV<sup>T</sup>                      （1）</p>
+<p>2）直接使用加性嵌入的方式，将W嵌入到对角阵D中，首先将对角阵D的对角线上的每个元素：</p>
+<p><img src="https://raw.githubusercontent.com/ppia/img/master/photo_2018-04-11_15-07-24.jpg" alt="">        (2)</p>
+<p>其中， α 为嵌入强度， 用于控制嵌入水印信号的能量。</p>
+<p>D<sub>temp</sub>=U<sub>W</sub>D<sub>W</sub>V<sup>T</sup>W                               (3)</p>
+<p>3）最后计算获得含有水印的图像矩阵：</p>
+<p>A<sub>W</sub>=UD<sub>W</sub>V<sub>T</sub>                                          (4)</p>
+<h3 id="1-2-水印提取"><a href="#1-2-水印提取" class="headerlink" title="1.2    水印提取"></a>1.2    水印提取</h3><p>1) 对一个可能受到攻击的图像进行 SVD 分解即：</p>
+<p>A<sup>*</sup><sub>W</sub>=U*D*<sub>W</sub>V<sup>*T</sup>                                     (5)</p>
+<p>2)用公式（3）中的 U<sub>W</sub> 和 VT<sub>W</sub>计算：</p>
+<p>∑*=U<sub>W</sub>D*<sub>W</sub>V<sup>+T</sup><sub>W </sub>                                   (6)</p>
+<p>3)利用嵌入步骤 1）中的对角阵 D，计算得到可能失真的水印信息：</p>
+<p>W<sub>*</sub> = 1/α（∑*-D）                                 (7)</p>
+<p> </p>
+<h2 id="2-优缺点分析"><a href="#2-优缺点分析" class="headerlink" title="2 优缺点分析"></a>2 优缺点分析</h2><p>优点：</p>
+<ol>
+<li>变换域方法通常都具有很好的鲁棒性, 对图像压缩、常用的图像滤波以及噪声均有一定的抵抗力；</li>
+<li>图像奇异值的稳定性非常好， 即当图像被施加小的扰动时， 图像的奇异值不会有大的变化；</li>
+<li>奇异值所表现的是图像的内蕴特性而非视觉特性。这个特性是SVD 方法的一个优点， 因为很多流行的水印算法都不能直接处理长方阵；</li>
+<li>处理后形成的是不可视水印；</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>大小要求： 必须大于64×64 （能保存的信息太少，判断不准确，而且意义也不大）；</li>
+<li>颜色要求，二值化图像打不了（打完之后失真较大）；</li>
+<li>满足鲁棒性，必须要求打的水印有一定强度，有强度的水印在二值化图像上失真比较明显；</li>
+<li>图像的数据都是整型，svd后会产生浮点数，二者转换会有误差</li>
+<li>水印的提取是非盲提取，即在提取时需要原始图像参与；</li>
+</ol>
+<p> </p>
+<h2 id="3-结束语"><a href="#3-结束语" class="headerlink" title="3 结束语"></a>3 结束语</h2><p>文章介绍了现有基于SVD的数字图像水印方案的基本思路，在对算法进行详细分析的基础上，得出了SVD水印算法的主要优缺点。
+ </p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 金渊智. 基于SVD的图像水印算法缺陷分析及对策[J]. 柳州职业技术学院学报, 2013, 13(2): 36-38</p>
+<p>[2] 赵敏. 基于奇异值分解的数字水印算法研究[D]. 西安:西安建筑科技大学, 2011. 8-9
+ </p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><pre><code class="python"><span class="keyword">import</span> cv2
+<span class="keyword">import</span> pywt
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">Components</span><span class="params">()</span>:</span>
+    Coefficients = []
+    U = <span class="keyword">None</span>
+    S = <span class="keyword">None</span>
+    V = <span class="keyword">None</span>
+
+
+<span class="class"><span class="keyword">class</span> <span class="title">watermarking</span><span class="params">()</span>:</span>
+    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, watermark_path=<span class="string">"watermarking.jpg"</span>, ratio=<span class="number">0.1</span>, wavelet=<span class="string">"haar"</span>,</span></span>
+<span class="function"><span class="params">                 level=<span class="number">2</span>)</span>:</span>
+        self.level = level
+        self.wavelet = wavelet
+        self.ratio = ratio
+        self.shape_watermark = cv2.imread(watermark_path, <span class="number">0</span>).shape
+        self.W_components = Components()
+        self.img_components = Components()
+        self.W_components.Coefficients, self.W_components.U, \
+        self.W_components.S, self.W_components.V = self.calculate(watermark_path)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(self, img)</span>:</span>
+        <span class="string">'''</span>
+<span class="string">        To calculate the Coefficients and SVD components.</span>
+<span class="string">        :param img: should be a numpy array or the path of the image.</span>
+<span class="string">        '''</span>
+        <span class="keyword">if</span> isinstance(img, str):
+            img = cv2.imread(img, <span class="number">0</span>)
+        Coefficients = pywt.wavedec2(img, wavelet=self.wavelet, level=self.level)
+        self.shape_LL = Coefficients[<span class="number">0</span>].shape
+        U, S, V = np.linalg.svd(Coefficients[<span class="number">0</span>])
+        <span class="keyword">return</span> Coefficients, U, S, V
+
+    <span class="function"><span class="keyword">def</span> <span class="title">diag</span><span class="params">(self, s)</span>:</span>
+        <span class="string">'''</span>
+<span class="string">        To recover the singular values to be a matrix.</span>
+<span class="string">        :param s: a 1D numpy array</span>
+<span class="string">        '''</span>
+        S = np.zeros(self.shape_LL)
+        row = min(S.shape)
+        S[:row, :row] = np.diag(s)
+        <span class="keyword">return</span> S
+
+    <span class="function"><span class="keyword">def</span> <span class="title">recover</span><span class="params">(self, name)</span>:</span>
+        <span class="string">'''</span>
+<span class="string">        To recover the image from the svd components and DWT</span>
+<span class="string">        :param name:</span>
+<span class="string">        '''</span>
+        components = eval(<span class="string">"self.{}_components"</span>.format(name))
+        s = eval(<span class="string">"self.S_{}"</span>.format(name))
+        components.Coefficients[<span class="number">0</span>] = components.U.dot(self.diag(s)).dot(components.V)
+        <span class="keyword">return</span> pywt.waverec2(components.Coefficients, wavelet=self.wavelet)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">watermark</span><span class="params">(self, img=<span class="string">"lena.jpg"</span>, path_save=None)</span>:</span>
+        <span class="string">'''</span>
+<span class="string">        This is the main function for image watermarking.</span>
+<span class="string">        :param img: image path or numpy array of the image.</span>
+<span class="string">        '''</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> path_save:
+            path_save = <span class="string">"watermarked_"</span> + img
+        self.path_save = path_save
+        self.img_components.Coefficients, self.img_components.U, \
+        self.img_components.S, self.img_components.V = self.calculate(img)
+        self.embed()
+        img_rec = self.recover(<span class="string">"img"</span>)
+        cv2.imwrite(path_save, img_rec)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">extracted</span><span class="params">(self, image_path=None, extracted_watermark_path=None)</span>:</span>
+        <span class="string">'''</span>
+<span class="string">        Extracted the watermark from the given image.</span>
+<span class="string">        '''</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> extracted_watermark_path:
+            extracted_watermark_path = <span class="string">"watermark_extracted.jpg"</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> image_path:
+            image_path = self.path_save
+        img = cv2.imread(image_path, <span class="number">0</span>)
+        img = cv2.resize(img, self.shape_watermark)
+        img_components = Components()
+        img_components.Coefficients, img_components.U, img_components.S, img_components.V = self.calculate(img)
+        self.S_W = (img_components.S - self.img_components.S) / self.ratio
+        watermark_extracted = self.recover(<span class="string">"W"</span>)
+        cv2.imwrite(extracted_watermark_path, watermark_extracted)
+
+    <span class="function"><span class="keyword">def</span> <span class="title">embed</span><span class="params">(self)</span>:</span>
+        self.S_img = self.img_components.S + self.ratio * self.W_components.S * \
+                                             (self.img_components.S.max() / self.W_components.S.max())
+
+
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    watermarking = watermarking()
+    watermarking.watermark()
+    watermarking.extracted()
+</code></pre>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="pia WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="pia Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"># ML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/15/A-Byte-of-Argparse/" rel="next" title="A Byte of Argparse">
+                <i class="fa fa-chevron-left"></i> A Byte of Argparse
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="pia" />
+          <p class="site-author-name" itemprop="name">pia</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/pia" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/iced_fish" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                    
+                      Twitter
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:i@tech.cx" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      Email
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-引言"><span class="nav-number">1.</span> <span class="nav-text">0 引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-SVD-应用于数字水印"><span class="nav-number">2.</span> <span class="nav-text">1 SVD 应用于数字水印</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-水印嵌入"><span class="nav-number">2.1.</span> <span class="nav-text">1.1    水印嵌入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-水印提取"><span class="nav-number">2.2.</span> <span class="nav-text">1.2    水印提取</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-优缺点分析"><span class="nav-number">3.</span> <span class="nav-text">2 优缺点分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-结束语"><span class="nav-number">4.</span> <span class="nav-text">3 结束语</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共13.1k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
